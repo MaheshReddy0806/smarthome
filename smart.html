@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Home Automation System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef1f5;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .module {
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .on { background-color: #4caf50; color: white; }
+    .off { background-color: #f44336; color: white; }
+    .status {
+      font-weight: bold;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smart Home Automation System</h1>
+
+  <!-- Lighting Module (High Cohesion: only handles lights) -->
+  <div class="module" id="lighting-module">
+    <h2>Lighting Control</h2>
+    <p>Status: <span class="status" id="light-status">Off</span></p>
+    <button class="on" onclick="turnOnLight()">Turn On</button>
+    <button class="off" onclick="turnOffLight()">Turn Off</button>
+  </div>
+
+  <!-- Cooling Module (High Cohesion: only handles AC) -->
+  <div class="module" id="cooling-module">
+    <h2>Air Conditioner Control</h2>
+    <p>Status: <span class="status" id="ac-status">Off</span></p>
+    <button class="on" onclick="turnOnAC()">Turn On</button>
+    <button class="off" onclick="turnOffAC()">Turn Off</button>
+  </div>
+
+  <!-- Security Module (High Cohesion: only handles security devices) -->
+  <div class="module" id="security-module">
+    <h2>Security Camera</h2>
+    <p>Status: <span class="status" id="camera-status">Off</span></p>
+    <button class="on" onclick="turnOnCamera()">Activate</button>
+    <button class="off" onclick="turnOffCamera()">Deactivate</button>
+  </div>
+
+  <!-- Placeholder for future modules like Smart Fridge or Door Lock -->
+  <div class="module" id="future-module">
+    <h2>Future Devices</h2>
+    <p>This area can easily accommodate new smart devices without affecting existing modules.</p>
+  </div>
+
+  <footer>
+    <p><strong>System Design Justification:</strong><br>
+      Each module is highly cohesive, managing only one device type. All modules interact through
+      independent JavaScript functions (simulating APIs), ensuring low coupling.<br><br>
+      This design supports scalability—new modules like Smart Fridge or Door Lock can be added
+      without modifying existing modules.<br>
+      The clear separation of concerns ensures maintainability and flexibility in the system.
+    </p>
+  </footer>
+
+  <script>
+    // Lighting module API
+    function turnOnLight() {
+      document.getElementById("light-status").innerText = "On";
+    }
+
+    function turnOffLight() {
+      document.getElementById("light-status").innerText = "Off";
+    }
+
+    // Cooling module API
+    function turnOnAC() {
+      document.getElementById("ac-status").innerText = "On";
+    }
+
+    function turnOffAC() {
+      document.getElementById("ac-status").innerText = "Off";
+    }
+
+    // Security module API
+    function turnOnCamera() {
+      document.getElementById("camera-status").innerText = "Active";
+    }
+
+    function turnOffCamera() {
+      document.getElementById("camera-status").innerText = "Inactive";
+    }
+  </script>
+</body>
+</html>
